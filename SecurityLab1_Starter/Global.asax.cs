@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecurityLab1_Starter.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,14 +21,15 @@ namespace SecurityLab1_Starter
         }
         protected void Application_Error()
         {
-            Server.GetLastError();
+           
             //System.Diagnostics.Debug.WriteLine();
             //        Response.Redirect("~/Home/Index");
-
+            LogingUtil lg = new LogingUtil();
+            lg.LogEvent(Server.GetLastError(),EventLogEntryType.Error);
             using (EventLog eventLog = new EventLog("Application"))
             {
                 eventLog.Source = "Application";
-                eventLog.WriteEntry(Server.GetLastError() + " LOGGED ERROR " + DateTime.Now, EventLogEntryType.Information, 101, 1);
+                eventLog.WriteEntry( " LOGGED ERROR " + DateTime.Now, EventLogEntryType.Information, 101, 1);
             }
 
         }
