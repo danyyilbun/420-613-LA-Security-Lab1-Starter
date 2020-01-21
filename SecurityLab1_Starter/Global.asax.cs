@@ -26,11 +26,6 @@ namespace SecurityLab1_Starter
             //        Response.Redirect("~/Home/Index");
             LogingUtil lg = new LogingUtil();
             lg.LogEvent(Server.GetLastError(),EventLogEntryType.Error);
-            using (EventLog eventLog = new EventLog("Application"))
-            {
-                eventLog.Source = "Application";
-                eventLog.WriteEntry( " LOGGED ERROR " + DateTime.Now, EventLogEntryType.Information, 101, 1);
-            }
 
         }
     }
