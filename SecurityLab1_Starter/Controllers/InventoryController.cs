@@ -6,14 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SecurityLab1_Starter.Controllers
-{
+namespace SecurityLab1_Starter.Controllers {
+    
     public class InventoryController : Controller
     {
+
+        [Authorize]
         // GET: Inventory
         public ActionResult Index()
         {
-            throw new Exception();
+            //throw new Exception();
             return View();
         }
         protected override void OnException(ExceptionContext filterContext)
