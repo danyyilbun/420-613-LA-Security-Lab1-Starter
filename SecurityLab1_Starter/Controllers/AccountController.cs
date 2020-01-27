@@ -22,7 +22,11 @@ namespace SecurityLab1_Starter.Controllers
             public ActionResult Login(LoginViewModel model, string returnUrl) {
                 if (ModelState.IsValid) {
                     if (authProvider.Authenticate(model.UserName, model.Password)) {
-                        return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
+                    
+
+                    
+
+                    return Redirect(returnUrl ?? Url.Action("Index", "Home"));
                     }
                     else {
                         ModelState.AddModelError("", "Incorrect username or password");
@@ -33,5 +37,13 @@ namespace SecurityLab1_Starter.Controllers
                     return View();
                 }
             }
+              public ActionResult Logout()
+            {
+                authProvider.Logout();
+            this.ControllerContext.HttpContext.Response.Cookies.Clear();
+            HttpContext.Session.Abandon(); // it will clear the session at the end of request
+                return RedirectToAction("Index","Home");
+            }
+
         }
     }

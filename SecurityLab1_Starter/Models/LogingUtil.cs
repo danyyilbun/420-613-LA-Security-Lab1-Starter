@@ -46,6 +46,7 @@ namespace SecurityLab1_Starter.Models {
             }
 
         }
+
         public static void Log(string logMessage, TextWriter w) {
             w.Write("\r\nLog Entry : ");
             w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");

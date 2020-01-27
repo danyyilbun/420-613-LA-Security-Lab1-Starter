@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using SecurityLab1_Starter.Infrastructure.Abstract
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,6 +20,20 @@
                 <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-item nav-link" })</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-item nav-link" })</li>
                 <li>@Html.ActionLink("Inventory Pricing", "Index", "Inventory", null, new { @class = "nav-item nav-link" })</li>
+
+
+
+
+                    @if (this.Context.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink(this.Context.User.Identity.Name.ToString().ToUpper(), "Logout", "Account", null, new { @class = "nav-item nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-item nav-link" })</li>
+                    }
+                
+
             </ul>
         </div>
     </nav>
