@@ -22,6 +22,7 @@ namespace SecurityLab1_Starter.Infrastructure.Concrete
         public void Logout()
         {
             FormsAuthentication.SignOut();
+
         }
         public string getUsername(HttpCookie authCookie)
         {

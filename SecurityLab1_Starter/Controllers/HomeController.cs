@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace SecurityLab1_Starter.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             return View();
@@ -20,7 +20,7 @@ namespace SecurityLab1_Starter.Controllers
 
             return View();
         }
-
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -28,6 +28,7 @@ namespace SecurityLab1_Starter.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -24,15 +24,14 @@
 
 
 
-                    @if (this.Context.User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink(this.Context.User.Identity.Name.ToString().ToUpper(), "Logout", "Account", null, new { @class = "nav-item nav-link" })</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-item nav-link" })</li>
-                    }
-                
+                @if (this.Context.User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink(this.Context.User.Identity.Name.ToString().ToUpper(), "Logout", "Account", null, new { @class = "nav-item nav-link" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-item nav-link" })</li>
+                }
 
             </ul>
         </div>

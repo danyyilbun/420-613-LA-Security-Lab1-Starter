@@ -47,6 +47,34 @@ namespace SecurityLab1_Starter.Models {
 
         }
 
+        public void logingLogToText(string loginName)
+        {
+            //Log the error!!
+            if (System.IO.File.Exists(@"C:\Temp\Log.txt"))
+            {
+                using (StreamWriter w = System.IO.File.AppendText(@"C:\Temp\useraccess.log"))
+                {
+                    Log(loginName, w);
+                    w.Close();
+                }
+
+
+            }
+            else
+            {
+                using (FileStream fs = System.IO.File.Create(@"C:\Temp\useraccess.log"))
+                {
+                        fs.Close();
+                }
+                    using (StreamWriter w = System.IO.File.AppendText(@"C:\Temp\useraccess.log"))
+                    {
+                        Log(loginName, w);
+                        w.Close();
+                    }
+                 
+            }
+
+        }
         public static void Log(string logMessage, TextWriter w) {
             w.Write("\r\nLog Entry : ");
             w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");

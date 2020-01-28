@@ -11,7 +11,8 @@ namespace SecurityLab1_Starter.Controllers {
     public class InventoryController : Controller
     {
 
-        [Authorize]
+
+        [Authorize(Users = "testuser2")]
         // GET: Inventory
         public ActionResult Index()
         {
